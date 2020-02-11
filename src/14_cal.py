@@ -31,9 +31,27 @@ import sys
 import calendar
 from datetime import datetime
 
-# input_month = input("Enter a month: ")
-# input_year = input("Enter a year: ")
-
-def get_cal(input_month, input_year):
-  # if !input_month and !input_year:
-    print(datetime.date.month)
+if len(sys.argv) == 1:
+  month = datetime.now().month
+  year = datetime.now().year
+  print(calendar.month(year, month))
+elif len(sys.argv) == 2:
+  if sys.argv[1].isnumeric():
+    if int(sys.argv[1]) < 13 and int(sys.argv[1]) > 0:
+      month = int(sys.argv[1])
+      year = datetime.now().year
+      print(calendar.month(year, month))
+    else:
+      print("Please enter a numeric value 1-12.")      
+  else:
+    print("Please enter a numeric value 1-12.")
+elif len(sys.argv) == 3:
+    if sys.argv[1].isnumeric() and sys.argv[2].isnumeric():
+      if int(sys.argv[1]) < 13 and int(sys.argv[1]) > 0:
+        month = int(sys.argv[1])
+        year = int(sys.argv[2])
+        print(calendar.month(year, month))
+      else:
+        print("Please enter a numeric value 1-12.")      
+    else:
+      print("Please enter a numeric value 1-12.")
